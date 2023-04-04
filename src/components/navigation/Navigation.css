@@ -1,0 +1,20 @@
+nav {
+    font-weight: bolder;
+    font-size: 20px;
+}
+.signup-btn {
+    opacity: 1;
+    border-radius: 300px;
+    box-shadow: rgb(135 93 255 / 58%) 0.398421px 0.398421px 0.563452px -0.9375px, rgb(135 93 255 / 55%) 1.20684px 1.20684px 1.70673px -1.875px, rgb(135 93 255 / 47%) 3.19014px 3.19014px 4.51154px -2.8125px, rgb(135 93 255 / 20%) 10px 10px 14.1421px -3.75px;
+    background: linear-gradient(102deg, rgb(0, 153, 255) 0%, rgb(204, 0, 255) 100%);
+    font-weight: bold;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+}  
+
+a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
