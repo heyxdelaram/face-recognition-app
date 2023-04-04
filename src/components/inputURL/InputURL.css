@@ -1,0 +1,29 @@
+section {
+    margin-top: 100px;
+}
+
+.detect-btn {
+    border: none;
+    padding: 10px;
+    font-weight:bold;
+    color: rgb(63, 63, 63);
+    padding: 10px 30px;
+}
+
+.detect-btn:hover {
+    background-color: rgb(63, 63, 63);
+    color: white;
+}
+
+
+input[type=text] {
+    border: none;
+    background: #f0f0f0;
+    transition: ease-in-out, width .35s ease-in-out;
+    color: rgb(63, 63, 63);
+}   
+
+input[type=text]:focus {
+    background-color: white;
+    outline: none;
+}
