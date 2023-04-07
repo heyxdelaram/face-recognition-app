@@ -23,9 +23,7 @@ class App extends React.Component {
 
   calculateFaceLocation = (data) => {
     const box_info = data.outputs[0].data.regions[0].region_info.bounding_box;
-    console.log(box_info)
     const image = document.getElementById("clarifai_img");
-    console.log(image)
     const width = Number(image.width);
     const height = Number(image.height);
     
@@ -46,7 +44,6 @@ class App extends React.Component {
   }
 
   setBox = (box) => {
-    console.log(box)
     this.setState({box: box})
   }
 
@@ -99,7 +96,7 @@ class App extends React.Component {
     return (
       <div className="App">
       <ParticlesBg color="#f1f1f1" num={150} type="cobweb" bg={true} />
-        <Navigation route = {this.state.route}/>
+        <Navigation Route = {this.state.route} changeRoute={this.changeRoute}/>
 
         {this.state.route === "home"
         ?<div>
