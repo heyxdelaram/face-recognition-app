@@ -16,14 +16,14 @@ section {
 }
 
 
-input[type=text] {
+input {
     border: none;
     background: #f0f0f0;
     transition: ease-in-out, width .35s ease-in-out;
     color: rgb(63, 63, 63);
 }   
 
-input[type=text]:focus {
+input:focus {
     background-color: white;
     outline: none;
 }

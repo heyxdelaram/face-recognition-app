@@ -1,25 +1,21 @@
 import React from "react";
+import "../inputURL/InputURL.css";
 
 const Signup = () => {
     return (
-        <div>
-            <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Email"/>
-            </div>
+    <div className="m-5 d-inline-block p-5 shadow-5 br3 bg-white">
+        <p className="f2" style={{fontWeight: "bold"}}>Sign up</p>
+        <div className="">
+            <input type="text" placeholder="Username" className="m-3 br2 p-3" />
         </div>
-        <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword3" placeholder="Password"/>
-            </div>
+        <div className="">
+            <input type="email" placeholder="Email" className="m-3 br2 p-3" />
         </div>
-        <div class="form-group row">
-            <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Sign in</button>
-            </div>
+        
+        <div className="">
+            <input type="password" placeholder="Password" className="m-3 br2 p-3" />
         </div>
+        <button className="detect-btn m-1 br4 grow" style={{backgroundColor: "#0099ff"}}type="button">Register</button>
     </div>
     )
 }
