@@ -6,6 +6,7 @@ import InputURL from "./components/inputURL/InputURL";
 import Rank from "./components/rank/Rank";
 import FaceRecognition from "./components/faceRecognition/FaceRecognition";
 import Signup from "./components/signup/Signup";
+import Login from "./components/login/Login";
 
 
 class App extends React.Component {
@@ -16,7 +17,7 @@ class App extends React.Component {
       input: "",
       imageURL: "",
       box: {},
-      route: "signup"
+      route: "login"
     }
   }
 
@@ -36,6 +37,9 @@ class App extends React.Component {
     }
   }
 
+  changeRoute  = (route) => {
+    this.setState({route: route})
+  }
   //to not show the broken image thumbnail
   fixBrokenImgae = () => {
     this.style.display='none';
@@ -95,15 +99,18 @@ class App extends React.Component {
     return (
       <div className="App">
       <ParticlesBg color="#f1f1f1" num={150} type="cobweb" bg={true} />
-        <Navigation />
+        <Navigation route = {this.state.route}/>
 
-        {this.state.route === "signup"
-        ?<Signup />
-        :<div>
+        {this.state.route === "home"
+        ?<div>
           <Rank />
           <InputURL onInputChange={this.onInputChange} onDetect={this.onDetect}/>
           <FaceRecognition box={this.state.box} imageURL={this.state.imageURL}/>
         </div>
+        : (this.state.route === "signup"
+        ? <Signup changeRoute={this.changeRoute}/>
+        : <Login changeRoute={this.changeRoute}/>
+        )
         }
       </div>
     );
