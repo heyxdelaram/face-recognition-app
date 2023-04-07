@@ -5,6 +5,7 @@ import Navigation from "./components/navigation/Navigation";
 import InputURL from "./components/inputURL/InputURL";
 import Rank from "./components/rank/Rank";
 import FaceRecognition from "./components/faceRecognition/FaceRecognition";
+import Signup from "./components/signup/Signup";
 
 
 class App extends React.Component {
@@ -14,25 +15,30 @@ class App extends React.Component {
     this.state = {
       input: "",
       imageURL: "",
-      box: {}
+      box: {},
+      route: "signup"
     }
   }
 
   calculateFaceLocation = (data) => {
     const box_info = data.outputs[0].data.regions[0].region_info.bounding_box;
+    console.log(box_info)
     const image = document.getElementById("clarifai_img");
+    console.log(image)
     const width = Number(image.width);
     const height = Number(image.height);
-    console.log(box_info)
-
-    console.log(width, height)
     
-    return({
-      bottomRow: height - (height * box_info.bottom_row),
-      leftCol: width * box_info.left_col,
-      rightCol: width - (width * box_info.right_col),
-      topRow: height * box_info.top_row
-    }) 
+    return {
+      leftCol: box_info.left_col * width,
+      topRow: box_info.top_row * height,
+      rightCol: width - (box_info.right_col * width),
+      bottomRow: height - (box_info.bottom_row * height)
+    }
+  }
+
+  //to not show the broken image thumbnail
+  fixBrokenImgae = () => {
+    this.style.display='none';
   }
 
   setBox = (box) => {
@@ -90,9 +96,15 @@ class App extends React.Component {
       <div className="App">
       <ParticlesBg color="#f1f1f1" num={150} type="cobweb" bg={true} />
         <Navigation />
-        <Rank />
-        <InputURL onInputChange={this.onInputChange} onDetect={this.onDetect}/>
-        <FaceRecognition box={this.state.box} imageURL={this.state.imageURL}/>
+
+        {this.state.route === "signup"
+        ?<Signup />
+        :<div>
+          <Rank />
+          <InputURL onInputChange={this.onInputChange} onDetect={this.onDetect}/>
+          <FaceRecognition box={this.state.box} imageURL={this.state.imageURL}/>
+        </div>
+        }
       </div>
     );
   }

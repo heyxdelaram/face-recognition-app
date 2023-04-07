@@ -1,13 +1,16 @@
 import React from "react";
 import "./FaceRecognition.css"
 
-const FaceRecognition = ({imageURL, box}) => {
+const FaceRecognition = ({imageURL, box, fixBrokenImg}) => {
     return(
         <div className="m-5">
-            <img id="clarifai_img"className="br4 grow shadow-5" src={imageURL} alt="Facereco" style={{width: 'auto', height: '400px'}}/>
-            <div className="bounding_box" style={{top: box.topRow, right: box.rightCol, left: box.leftCol, bottom: box.bottomRow}}></div>
+            <div className="relative">
+                <img id="clarifai_img" src={imageURL} alt="" onError={fixBrokenImg} style={{width: 'auto', height: 'auto'}}/>
+                <div className="bounding-box" style={{top: box.topRow, right: box.rightCol, bottom: box.bottomRow, left: box.leftCol}}></div>
+            </div>
         </div>
     )
 }
 
 export default FaceRecognition;
+
